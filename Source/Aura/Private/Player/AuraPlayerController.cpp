@@ -16,7 +16,6 @@ void AAuraPlayerController::PlayerTick(float DeltaTime)
 {
 	Super::PlayerTick(DeltaTime);
 
-	UE_LOG(LogTemp, Warning, TEXT("Hello World"));
 	CursorTrace();
 }
 
