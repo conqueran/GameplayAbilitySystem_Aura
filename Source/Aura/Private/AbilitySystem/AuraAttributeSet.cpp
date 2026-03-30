@@ -1,7 +1,8 @@
 // Copyright LightBear Software
 
-#include "GameFramework/Character.h"
 #include "AbilitySystem/AuraAttributeSet.h"
+
+#include "GameFramework/Character.h"
 #include <AbilitySystemBlueprintLibrary.h>
 #include <Net/UnrealNetwork.h>
 
