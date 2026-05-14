@@ -11,7 +11,7 @@
  */
 UCLASS()
 class AURA_API UAuraGameplayAbility : public UGameplayAbility
-{r
+{
 	GENERATED_BODY()
 	
 };
