@@ -10,6 +10,8 @@
 class UInputMappingContext;
 class UInputAction;
 struct FInputActionValue;
+class UAuraInputConfig;
+struct FGameplayTag;
 
 /**
  * 
@@ -39,4 +41,11 @@ private:
 	void CursorTrace();
 	TScriptInterface<IEnemyInterface> LastActor;
 	TScriptInterface<IEnemyInterface> ThisActor;
+
+	void AbilityInputTagPressed(FGameplayTag InputTag);
+	void AbilityInputTagReleased(FGameplayTag InputTag);
+	void AbilityInputTagHeld(FGameplayTag InputTag);
+
+	UPROPERTY(EditDefaultsOnly, Category = "Input")
+	TObjectPtr<UAuraInputConfig> InputConfig;
 };
