@@ -3,7 +3,7 @@
 
 #include "AbilitySystem/ModMagCalc/MMC_MaxHealth.h"
 #include "AbilitySystem//AuraAttributeSet.h"
-#include <Interaction/CombatInterface.h>
+#include "Interaction/CombatInterface.h"
 
 UMMC_MaxHealth::UMMC_MaxHealth()
 {
