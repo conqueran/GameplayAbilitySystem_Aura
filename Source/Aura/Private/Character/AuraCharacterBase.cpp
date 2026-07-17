@@ -82,6 +82,8 @@ FVector AAuraCharacterBase::GetCombatSocketLocation_Implementation(const FGamepl
 	return FVector();
 }
 
+
+
 bool AAuraCharacterBase::IsDead_Implementation() const
 {
 	return bDead;
@@ -95,6 +97,11 @@ AActor* AAuraCharacterBase::GetAvatar_Implementation()
 TArray<FTaggedMontage> AAuraCharacterBase::GetAttackMontages_Implementation()
 {
 	return AttackMontages;
+}
+
+UNiagaraSystem* AAuraCharacterBase::GetBloodEffect_Implementation()
+{
+	return BloodEffect;
 }
 
 void AAuraCharacterBase::InitAbilityActorInfo()
