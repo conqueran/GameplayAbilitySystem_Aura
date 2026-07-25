@@ -37,6 +37,7 @@ public:
 	virtual UNiagaraSystem* GetBloodEffect_Implementation() override;
 	virtual FTaggedMontage GetTaggedMontageByTag_Implementation(const FGameplayTag& MontageTag);
 	virtual int32 GetMinionCount_Implementation();
+	virtual void IncrementMinionCount_Implementation(int32 Amount);
 	/* end Combat Interface */
 
 	UFUNCTION(NetMulticast, Reliable)
