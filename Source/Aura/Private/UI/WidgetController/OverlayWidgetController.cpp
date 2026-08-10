@@ -94,7 +94,7 @@ void UOverlayWidgetController::BindCallbacksToDependencies()
 void UOverlayWidgetController::OnInitializeStartupAbilities(UAuraAbilitySystemComponent* AuraAbilitySystemComponent)
 {
 	//TODO Get information about all given abilities, look up their Ability Info, and Broadcast it to widgets.
-	if (AuraAbilitySystemComponent->bStartupAbilitiesGiven) return;
+	if (!AuraAbilitySystemComponent->bStartupAbilitiesGiven) return;
 
 	FForEachAbility BroadcastDelegate;
 	BroadcastDelegate.BindLambda(
