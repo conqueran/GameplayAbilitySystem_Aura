@@ -10,6 +10,7 @@
 #include <Kismet/GameplayStatics.h>
 #include <Player/AuraPlayerController.h>
 #include <AbilitySystem/AuraAbilitySystemLibrary.h>
+#include "Aura/AuraLogChannels.h"
 
 UAuraAttributeSet::UAuraAttributeSet()
 {
