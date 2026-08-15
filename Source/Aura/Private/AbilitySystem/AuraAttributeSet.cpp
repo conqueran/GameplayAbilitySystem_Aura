@@ -11,6 +11,7 @@
 #include <Player/AuraPlayerController.h>
 #include <AbilitySystem/AuraAbilitySystemLibrary.h>
 #include "Aura/AuraLogChannels.h"
+#include "Interaction/PlayerInterface.h"
 
 UAuraAttributeSet::UAuraAttributeSet()
 {
@@ -181,6 +182,12 @@ void UAuraAttributeSet::PostGameplayEffectExecute(const FGameplayEffectModCallba
 	{
 		const float LocalIncomingXP = GetIncomingXP();
 		SetIncomingXP(0.f);
+
+		//TODO: See if we should level up
+		if (Props.SourceCharacter->Implements<UPlayerInterface>())
+		{
+			IPlayerInterface::Execute_AddToXP(Props.SourceCharacter, LocalIncomingXP);
+		}
 	}
 }
 
