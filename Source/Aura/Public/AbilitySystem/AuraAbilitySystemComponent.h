@@ -9,8 +9,8 @@
 DECLARE_MULTICAST_DELEGATE_OneParam(FEffectAssetTags, const FGameplayTagContainer& /*AssetTags*/);
 DECLARE_MULTICAST_DELEGATE(FAbilitiesGiven);
 DECLARE_DELEGATE_OneParam(FForEachAbility, const FGameplayAbilitySpec&);
-DECLARE_MULTICAST_DELEGATE_TwoParams(FAbilityStatusChanged, 
-	const FGameplayTag& /* Ability Tag */, const FGameplayTag& /* Status Tag */)
+DECLARE_MULTICAST_DELEGATE_ThreeParams(FAbilityStatusChanged, 
+	const FGameplayTag& /* Ability Tag */, const FGameplayTag& /* Status Tag */, int32 /* Ability Level */)
 
 /**
  * 
@@ -47,6 +47,9 @@ public:
 	void ServerUpgradeAttribute(const FGameplayTag& AttributeTag);
 
 	void UpdateAbilityStatuses(int32 Level);
+
+	UFUNCTION(Server, Reliable)
+	void ServerSpendSpellPoint(const FGameplayTag& AbilityTag);
 protected:
 
 	virtual void OnRep_ActivateAbilities() override;
@@ -56,6 +59,6 @@ protected:
 		const FGameplayEffectSpec& EffectSpec, FActiveGameplayEffectHandle ActiveEffectHandle);
 
 	UFUNCTION(Client, Reliable)
-	void ClientUpdateAbilityStatus(const FGameplayTag& AbilityTag, const FGameplayTag& StatusTag);
+	void ClientUpdateAbilityStatus(const FGameplayTag& AbilityTag, const FGameplayTag& StatusTag, int32 AbilityLevel);
 	
 };
