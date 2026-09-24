@@ -8,9 +8,11 @@
 #include "AuraGameplayTags.h"
 #include "SpellMenuWidgetController.generated.h"
 
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FSpellGlobeSelectedSignature, bool,
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_FourParams(FSpellGlobeSelectedSignature, bool,
 	bSpendPointsButtonEnabled,
-	bool, bEquipButtonEnabled);
+	bool, bEquipButtonEnabled,
+	FString, DescriptionString,
+	FString, NextLevelDescriptionString);
 
 struct FSelectedAbility
 {
@@ -41,6 +43,9 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	void SpendPointButtonPressed();
+
+	
+
 	
 private:
 	static void ShouldEnableButtons(const FGameplayTag& AbilityStatus, int32 SpellPoints,
@@ -48,4 +53,7 @@ private:
 	FSelectedAbility SelectedAbility = { FAuraGameplayTags::Get().Abilities_None, 
 		FAuraGameplayTags::Get().Abilities_Status_Locked };
 	int32 CurrentSpellPoints = 0;
+
+	void BroadcastSpellGlobeSelectedInfo(const FGameplayTag& AbilityStatus,
+		const FGameplayTag& AbilityTag, int32 SpellPoints);
 };
