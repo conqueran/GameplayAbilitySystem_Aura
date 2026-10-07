@@ -5,9 +5,7 @@
 #include "CoreMinimal.h"
 #include "UI/WidgetController/AuraWidgetController.h"
 #include "AbilitySystemComponent.h"
-
 #include "OverlayWidgetController.generated.h"
-
 
 USTRUCT(BlueprintType)
 struct FUIWidgetRow : public FTableRowBase
@@ -74,6 +72,9 @@ protected:
 	T* GetDataTableRowByTag(UDataTable* DataTable, const FGameplayTag& Tag);
 
 	void OnXPChanged(int32 NewXP);
+
+	void OnAbilityEquipped(const FGameplayTag& AbilityTag, const FGameplayTag& Status,
+		const FGameplayTag& Slot, const FGameplayTag& PreviousSlot) const;
 };
 
 template<typename T>
