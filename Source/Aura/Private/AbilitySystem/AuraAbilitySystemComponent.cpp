@@ -247,11 +247,11 @@ void UAuraAbilitySystemComponent::ServerEquipAbility_Implementation(const FGamep
 			// Clear this ability's slot, just in case, it's a different slot
 			ClearSlot(AbilitySpec);
 			// Now, assign this slot to this ability
-			AbilitySpec->DynamicAbilityTags.AddTag(Slot);
+			AbilitySpec->GetDynamicSpecSourceTags().AddTag(Slot);
 			if (Status.MatchesTagExact(GameplayTags.Abilities_Status_Unlocked))
 			{
-				AbilitySpec->DynamicAbilityTags.RemoveTag(GameplayTags.Abilities_Status_Unlocked);
-				AbilitySpec->DynamicAbilityTags.AddTag(GameplayTags.Abilities_Status_Equipped);
+				AbilitySpec->GetDynamicSpecSourceTags().RemoveTag(GameplayTags.Abilities_Status_Unlocked);
+				AbilitySpec->GetDynamicSpecSourceTags().AddTag(GameplayTags.Abilities_Status_Equipped);
 			}
 			MarkAbilitySpecDirty(*AbilitySpec);
 		}
@@ -292,7 +292,7 @@ bool UAuraAbilitySystemComponent::GetDescriptionsByAbilityTag(const FGameplayTag
 void UAuraAbilitySystemComponent::ClearSlot(FGameplayAbilitySpec* Spec)
 {
 	const FGameplayTag Slot = GetInputTagFromSpec(*Spec);
-	Spec->DynamicAbilityTags.RemoveTag(Slot);
+	Spec->GetDynamicSpecSourceTags().RemoveTag(Slot);
 	MarkAbilitySpecDirty(*Spec);
 }
 
@@ -310,7 +310,7 @@ void UAuraAbilitySystemComponent::ClearAbilitiesOfSlot(const FGameplayTag& Slot)
 
 bool UAuraAbilitySystemComponent::AbilityHasSlot(FGameplayAbilitySpec* Spec, const FGameplayTag& Slot)
 {
-	for (FGameplayTag Tag : Spec->DynamicAbilityTags)
+	for (FGameplayTag Tag : Spec->GetDynamicSpecSourceTags())
 	{
 		if (Tag.MatchesTagExact(Slot))
 		{
