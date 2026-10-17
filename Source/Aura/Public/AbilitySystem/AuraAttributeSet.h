@@ -244,6 +244,9 @@ public:
 
 private:
 
+	void HandleIncomingXP(FEffectProperties& Props);
+	void HandleIncomingDamage(FEffectProperties& Props);
+	void Debuff(FEffectProperties& Props);
 	void SetEffectProperties(const FGameplayEffectModCallbackData& Data, FEffectProperties& Props) const;
 	void ShowFloatingText(const FEffectProperties& Props, float Damage, bool bBlockedHit, bool bCriticalHit) const;
 	void SendXPEvent(const FEffectProperties& Props);
