@@ -183,9 +183,9 @@ void FAuraGameplayTags::InitializeNativeGameplayTags()
 		FName("Debuff.Frequency"),
 		FString("Debuff frequency"));
 
-	GameplayTags.Debuff_Physical = UGameplayTagsManager::Get().AddNativeGameplayTag(
-		FName("Debuff.Physical"),
-		FString("Debuff for Physical Damage"));
+	GameplayTags.Debuff_Duration = UGameplayTagsManager::Get().AddNativeGameplayTag(
+		FName("Debuff.Duration"),
+		FString("Debuff duration"));
 
 	/*
 	Meta Attributes
